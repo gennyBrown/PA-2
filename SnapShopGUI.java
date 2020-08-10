@@ -214,15 +214,13 @@ public class SnapShopGUI {
      * Sets up the graphical components.
      */
     private void doLayout() {
-        // create the filter buttons
-        myFilterButtons = new ArrayList<JButton>();
-        myFilterButtons.add(createButton(new EdgeDetectFilter()));
-        myFilterButtons.add(createButton(new EdgeHighlightFilter()));
-        myFilterButtons.add(createButton(new FlipHorizontalFilter()));
-        myFilterButtons.add(createButton(new FlipVerticalFilter()));
-        myFilterButtons.add(createButton(new GrayscaleFilter()));
-        myFilterButtons.add(createButton(new SharpenFilter()));
-        myFilterButtons.add(createButton(new SoftenFilter()));
+
+        /*
+         * extract method
+         * new method called createButtons to create filter buttons
+         * by Cynthia
+         */
+        createButtons();
 
         // add them to a panel
         final JPanel westNorthPanel = new JPanel(new GridLayout(myFilterButtons.size(), 1));
@@ -247,8 +245,6 @@ public class SnapShopGUI {
         westOuterPanel.add(westSouthPanel, BorderLayout.SOUTH);
 
         
-        myFrame.add(westOuterPanel, BorderLayout.WEST);
-        
 //        final JPanel westOuterPanel = new JPanel();
 //        westOuterPanel.add(westInnerPanel);
 //        myFrame.add(westInnerPanel, BorderLayout.WEST);
@@ -257,6 +253,11 @@ public class SnapShopGUI {
         JPanel imagePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         imagePanel.add(myImageLabel);
         myFrame.add(imagePanel, BorderLayout.CENTER);
+        /*
+         * slide statemnts
+         * by Cynthia
+         */
+        myFrame.add(westOuterPanel, BorderLayout.WEST);
         
         // label added to panel does not work
 //        JPanel imagePanel = new JPanel();
@@ -264,6 +265,17 @@ public class SnapShopGUI {
 //        myFrame.add(imagePanel);
 
 
+    }
+    // create the filter buttons
+    private void createButtons() {
+        myFilterButtons = new ArrayList<JButton>();
+        myFilterButtons.add(createButton(new EdgeDetectFilter()));
+        myFilterButtons.add(createButton(new EdgeHighlightFilter()));
+        myFilterButtons.add(createButton(new FlipHorizontalFilter()));
+        myFilterButtons.add(createButton(new FlipVerticalFilter()));
+        myFilterButtons.add(createButton(new GrayscaleFilter()));
+        myFilterButtons.add(createButton(new SharpenFilter()));
+        myFilterButtons.add(createButton(new SoftenFilter()));
     }
 
     /**

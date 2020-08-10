@@ -126,7 +126,11 @@ public abstract class AbstractFilter implements Filter {
         final int h = theImage.getHeight(null);
         final Pixel[][] oldPixels = theImage.getPixelData();
         final Pixel[][] newPixels = new Pixel[h][w];
-
+        /*
+         * rename variable
+         * p to pixel
+         * by Cynthia 
+         */
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
                 // add up 9 neighboring pixels
@@ -135,12 +139,12 @@ public abstract class AbstractFilter implements Filter {
                 int blue = 0;
                 for (int j = Math.max(0, y - 1); j <= Math.min(y + 1, h - 1); j++) {
                     for (int i = Math.max(0, x - 1); i <= Math.min(x + 1, w - 1); i++) {
-                        // Pixel p = oldPixels[i][j];
-                        final Pixel p = oldPixels[j][i];
+                        // Pixel pixel = oldPixels[i][j];
+                        final Pixel pixel = oldPixels[j][i];
                         final int weight = theWeights[y - j + 1][x - i + 1];
-                        red = red + p.getRed() * weight;
-                        green = green + p.getGreen() * weight;
-                        blue = blue + p.getBlue() * weight;
+                        red = red + pixel.getRed() * weight;
+                        green = green + pixel.getGreen() * weight;
+                        blue = blue + pixel.getBlue() * weight;
                     }
                 }
 
