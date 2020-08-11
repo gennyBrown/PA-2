@@ -9,11 +9,11 @@ import image.PixelImage;
 
 /**
  * Abstract superclass for all image filters.
- * 
- * @author Marty Stepp
- * @author Daniel M. Zimmerman
- * @author Alan Fowler
- * @version 1.1
+ *
+ * @author Cynthia Pang
+ * @author Genevieve Brown
+ * @author Bayley D Cope
+ *
  */
 public abstract class AbstractFilter implements Filter {
     /**
@@ -126,8 +126,11 @@ public abstract class AbstractFilter implements Filter {
         final int h = theImage.getHeight(null);
         final Pixel[][] oldPixels = theImage.getPixelData();
         final Pixel[][] newPixels = new Pixel[h][w];
-
-        
+        /*
+         * rename variable
+         * p to pixel
+         * by Cynthia 
+         */
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
                 // add up 9 neighboring pixels
@@ -136,7 +139,7 @@ public abstract class AbstractFilter implements Filter {
                 int blue = 0;
                 for (int j = Math.max(0, y - 1); j <= Math.min(y + 1, h - 1); j++) {
                     for (int i = Math.max(0, x - 1); i <= Math.min(x + 1, w - 1); i++) {
-                        // Pixel p = oldPixels[i][j];
+                        // Pixel pixel = oldPixels[i][j];
                         final Pixel pixel = oldPixels[j][i];
                         final int weight = theWeights[y - j + 1][x - i + 1];
                         red = red + pixel.getRed() * weight;
@@ -164,6 +167,47 @@ public abstract class AbstractFilter implements Filter {
      * @param theWeights The weights matrix.
      * @exception IllegalArgumentException if the weights matrix is invalid.
      */
+
+    /**
+     * Push function down
+     * by Geneveive Brown
+     * */
+    //private void checkWeights(final int[][] theWeights) throws IllegalArgumentException {
+    //    if (theWeights == null || theWeights.length != Pixel.NUM_CHANNELS
+    //        || theWeights[0] == null || theWeights[0].length != Pixel.NUM_CHANNELS
+    //        || theWeights[1] == null || theWeights[1].length != Pixel.NUM_CHANNELS
+    //        || theWeights[2] == null || theWeights[2].length != Pixel.NUM_CHANNELS) {
+    //        throw new IllegalArgumentException("must pass correctly-sized grid");
+    //    }
+   // }
+
+    /**
+     * Swaps the specified pixels in the image.
+     *
+     * @param theData The image data.
+     * @param row1 The row of the first pixel to swap.
+     * @param col1 The column of the first pixel to swap.
+     * @param row2 The row of the second pixel to swap.
+     * @param col2 The column of the second pixel to swap.
+     */
+
+    /**
+     * Pull up a method
+     * By Genevieve Brown
+     * */
+
+    protected void swap(final Pixel[][] theData, final int row1, final int col1,
+                        final int row2, final int col2) {
+        final Pixel temp = theData[row1][col1];
+        theData[row1][col1] = theData[row2][col2];
+        theData[row2][col2] = temp;
+    }
+
+
+    /**
+     * Push function down
+     * by Geneveive Brown
+     * */
     private void checkWeights(final int[][] theWeights) throws IllegalArgumentException {
         if (theWeights == null || theWeights.length != Pixel.NUM_CHANNELS
             || theWeights[0] == null || theWeights[0].length != Pixel.NUM_CHANNELS
@@ -171,7 +215,7 @@ public abstract class AbstractFilter implements Filter {
             || theWeights[2] == null || theWeights[2].length != Pixel.NUM_CHANNELS) {
             throw new IllegalArgumentException("must pass correctly-sized grid");
         }
-    }
+     }
 
     /**
      * Normalizes the specified color value to the range 0-255.
@@ -179,10 +223,15 @@ public abstract class AbstractFilter implements Filter {
      * @param theColor The color value.
      * @return the normalized color value.
      */
-    protected int normalize(final int theColor) {
-        return Math.max(Pixel.MIN_COLOR_VALUE, Math.min(Pixel.MAX_COLOR_VALUE, theColor));
-    }
 
+    /**
+     * Inline a method
+     * By Genevieve Brown
+     * */
+    protected int normalize(final int theColor) { return Math.max(Pixel.MIN_COLOR_VALUE, Math.min(Pixel.MAX_COLOR_VALUE, theColor)); }
+    //protected int normalize(final int theColor) {
+    // return Math.max(Pixel.MIN_COLOR_VALUE, Math.min(Pixel.MAX_COLOR_VALUE, theColor));
+    // }
     /**
      * Swaps the specified pixels in the image.
      * 
@@ -192,10 +241,14 @@ public abstract class AbstractFilter implements Filter {
      * @param row2 The row of the second pixel to swap.
      * @param col2 The column of the second pixel to swap.
      */
-    protected void swap(final Pixel[][] theData, final int row1, final int col1,
-                        final int row2, final int col2) {
-        final Pixel temp = theData[row1][col1];
-        theData[row1][col1] = theData[row2][col2];
-        theData[row2][col2] = temp;
-    }
+
+    /**
+     *
+    *protected void swap(final Pixel[][] theData, final int row1, final int col1,
+    *                    final int row2, final int col2) {
+    *    final Pixel temp = theData[row1][col1];
+    *     theData[row1][col1] = theData[row2][col2];
+    *    theData[row2][col2] = temp;
+    * }
+     */
 }

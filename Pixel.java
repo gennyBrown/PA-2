@@ -11,6 +11,10 @@ package image;
  * @author Daniel M. Zimmerman
  * @author Alan Fowler
  * @version 1.1
+ *
+ *  @author Cynthia Pang
+ *  @author Genevieve Brown
+ *  @author Bayley D Cope
  */
 public class Pixel {
     // Static Fields
@@ -143,7 +147,15 @@ public class Pixel {
      */
     private void checkColorValue(final int theValue) throws IllegalArgumentException {
         if (theValue < MIN_COLOR_VALUE || theValue > MAX_COLOR_VALUE) {
-            throw new IllegalArgumentException("Invalid color value: " + theValue);
+            throw getIllegalArgumentException(theValue);
         }
+    }
+/**
+ * Extract a function
+ * by Genevieve Brown
+ * */
+    @org.jetbrains.annotations.NotNull
+    private IllegalArgumentException getIllegalArgumentException(int theValue) {
+        return new IllegalArgumentException("Invalid color value: " + theValue);
     }
 }

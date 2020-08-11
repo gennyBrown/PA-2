@@ -11,6 +11,10 @@ package filters;
  * @author Daniel M. Zimmerman
  * @author Alan Fowler
  * @version 1.1
+ *
+ *  @author Cynthia Pang
+ *  @author Genevieve Brown
+ *  @author Bayley D Cope
  */
 public class EdgeHighlightFilter extends AbstractWeightedFilter {
     /**

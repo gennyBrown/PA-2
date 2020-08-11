@@ -149,25 +149,14 @@ public class SnapShopGUI {
         // works on frame; top center on panel
         myImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         myImageLabel.setVerticalAlignment(SwingConstants.CENTER);
-        
-        // aligns left on Frame; aligns top center on panel
-//        myImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        myImageLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        
-        // aligns left on Frame; top center on panel
-//        myImageLabel.setAlignmentX(SwingConstants.CENTER);
-//        myImageLabel.setAlignmentY(SwingConstants.CENTER);
 
+        /**
+         * Remove dead code
+         * by Genevieve Brown
+         * */
         myOpenButton = new JButton("Open...");
         mySaveButton = new JButton("Save As...");
         myCloseButton = new JButton("Close Image");
-        
-        // To display icons on these buttons, comment out the three lines above
-        // and use the three lines below instead.
-        
-//        myOpenButton = new JButton("Open...", new ImageIcon("icons\\open.gif"));
-//        mySaveButton = new JButton("Save As...", new ImageIcon("icons\\save.gif"));
-//        myCloseButton = new JButton("Close Image", new ImageIcon("icons\\close.gif"));
     }
 
     /**
@@ -214,15 +203,13 @@ public class SnapShopGUI {
      * Sets up the graphical components.
      */
     private void doLayout() {
-        // create the filter buttons
-        myFilterButtons = new ArrayList<JButton>();
-        myFilterButtons.add(createButton(new EdgeDetectFilter()));
-        myFilterButtons.add(createButton(new EdgeHighlightFilter()));
-        myFilterButtons.add(createButton(new FlipHorizontalFilter()));
-        myFilterButtons.add(createButton(new FlipVerticalFilter()));
-        myFilterButtons.add(createButton(new GrayscaleFilter()));
-        myFilterButtons.add(createButton(new SharpenFilter()));
-        myFilterButtons.add(createButton(new SoftenFilter()));
+
+        /*
+         * extract method
+         * new method called createButtons to create filter buttons
+         * by Cynthia
+         */
+        createButtons();
 
         // add them to a panel
         final JPanel westNorthPanel = new JPanel(new GridLayout(myFilterButtons.size(), 1));
@@ -247,8 +234,6 @@ public class SnapShopGUI {
         westOuterPanel.add(westSouthPanel, BorderLayout.SOUTH);
 
         
-        myFrame.add(westOuterPanel, BorderLayout.WEST);
-        
 //        final JPanel westOuterPanel = new JPanel();
 //        westOuterPanel.add(westInnerPanel);
 //        myFrame.add(westInnerPanel, BorderLayout.WEST);
@@ -257,6 +242,11 @@ public class SnapShopGUI {
         JPanel imagePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         imagePanel.add(myImageLabel);
         myFrame.add(imagePanel, BorderLayout.CENTER);
+        /*
+         * slide statemnts
+         * by Cynthia
+         */
+        myFrame.add(westOuterPanel, BorderLayout.WEST);
         
         // label added to panel does not work
 //        JPanel imagePanel = new JPanel();
@@ -264,6 +254,17 @@ public class SnapShopGUI {
 //        myFrame.add(imagePanel);
 
 
+    }
+    // create the filter buttons
+    private void createButtons() {
+        myFilterButtons = new ArrayList<JButton>();
+        myFilterButtons.add(createButton(new EdgeDetectFilter()));
+        myFilterButtons.add(createButton(new EdgeHighlightFilter()));
+        myFilterButtons.add(createButton(new FlipHorizontalFilter()));
+        myFilterButtons.add(createButton(new FlipVerticalFilter()));
+        myFilterButtons.add(createButton(new GrayscaleFilter()));
+        myFilterButtons.add(createButton(new SharpenFilter()));
+        myFilterButtons.add(createButton(new SoftenFilter()));
     }
 
     /**
