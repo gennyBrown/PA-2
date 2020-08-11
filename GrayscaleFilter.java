@@ -52,20 +52,27 @@ public class GrayscaleFilter extends AbstractFilter {
      * 
      * @param theImage The image.
      */
+
+    /**
+      * rename variable
+      * p to pixelColor
+      * q to pixelGray
+      * by Bayley
+      */
     @Override
     public void filter(final PixelImage theImage) {
         final int w = theImage.getWidth(null);
         final int h = theImage.getHeight(null);
         for (int i = 0; i < w; i++) {
             for (int j = 0; j < h; j++) {
-                final int p = theImage.getRGB(i, j);
-                final int q =
-                        (((p >> RED_OFFSET) & MASK)
-                                + ((p >> GREEN_OFFSET) & MASK)
-                                + (p & MASK))
+                final int pixelColor = theImage.getRGB(i, j);
+                final int pixelGray =
+                        (((pixelColor >> RED_OFFSET) & MASK)
+                                + ((pixelColor >> GREEN_OFFSET) & MASK)
+                                + (pixelColor & MASK))
                                 / NUM_COLORS;
-                theImage.setRGB(i, j, (MASK << ALPHA_OFFSET) | (q << RED_OFFSET)
-                                       | (q << GREEN_OFFSET) | q);
+                theImage.setRGB(i, j, (MASK << ALPHA_OFFSET) | (pixelGray << RED_OFFSET)
+                                       | (pixelGray << GREEN_OFFSET) | pixelGray);
             }
         }
     }

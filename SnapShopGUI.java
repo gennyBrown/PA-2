@@ -319,7 +319,11 @@ public class SnapShopGUI {
      * Closes the image.
      */
     private void closeImage() {
-        // my_image = null;
+        /**
+         * remove dead code
+         * 1 line removed
+         * by Bayley
+         */
         myImageLabel.setIcon(null);
         doEnabling();
         myFrame.setMinimumSize(new Dimension());
@@ -337,13 +341,14 @@ public class SnapShopGUI {
      */
     private File showChooser(final boolean theOpenFlag) {
         File result = null;
+        /**
+         * remove dead code
+         * removed 2 lines
+         * by Bayley 
+         */
 
         // construct file chooser if necessary
-        if (myChooser == null) {
-            // my_chooser = new JFileChooser(System.getProperty(".home"));
-
-//            myChooser = new JFileChooser(".");
-            
+        if (myChooser == null) {          
             myChooser = new JFileChooser(".");
         }
 

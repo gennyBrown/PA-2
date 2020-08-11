@@ -86,14 +86,20 @@ public final class PixelImage extends BufferedImage {
      * 
      * @return the pixel data.
      */
+
+     /**
+      * rename variable
+      * r to raster
+      * by Bayley
+      */
     public Pixel[][] getPixelData() {
-        final Raster r = getRaster();
-        final Pixel[][] data = new Pixel[r.getHeight()][r.getWidth()];
+        final Raster raster = getRaster();
+        final Pixel[][] data = new Pixel[raster.getHeight()][raster.getWidth()];
         int[] samples = new int[Pixel.NUM_CHANNELS];
 
-        for (int row = 0; row < r.getHeight(); row++) {
-            for (int col = 0; col < r.getWidth(); col++) {
-                samples = r.getPixel(col, row, samples);
+        for (int row = 0; row < raster.getHeight(); row++) {
+            for (int col = 0; col < raster.getWidth(); col++) {
+                samples = raster.getPixel(col, row, samples);
                 final Pixel newPixel = new Pixel(samples[0], samples[1], samples[2]);
                 data[row][col] = newPixel;
             }
