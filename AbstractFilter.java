@@ -127,11 +127,7 @@ public abstract class AbstractFilter implements Filter {
         final Pixel[][] oldPixels = theImage.getPixelData();
         final Pixel[][] newPixels = new Pixel[h][w];
 
-        /**
-         * rename variable
-         * p to pixel
-         * by Bayley
-         */
+        
         for (int y = 0; y < h; y++) {
             for (int x = 0; x < w; x++) {
                 // add up 9 neighboring pixels

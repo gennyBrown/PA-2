@@ -60,10 +60,15 @@ public final class PixelImage extends BufferedImage {
             throw new IOException("File did not contain a valid image: " + theFile);
         }
 
+        /**
+         * rename variable
+         * g to graphic
+         * by Bayley
+         */
         final PixelImage image =
                 new PixelImage(buf.getWidth(), buf.getHeight(), BufferedImage.TYPE_INT_RGB);
-        final Graphics g = image.getGraphics();
-        g.drawImage(buf, 0, 0, null);
+        final Graphics graphic = image.getGraphics();
+        graphic.drawImage(buf, 0, 0, null);
         return image;
     }
 
