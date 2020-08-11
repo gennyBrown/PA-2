@@ -149,25 +149,14 @@ public class SnapShopGUI {
         // works on frame; top center on panel
         myImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         myImageLabel.setVerticalAlignment(SwingConstants.CENTER);
-        
-        // aligns left on Frame; aligns top center on panel
-//        myImageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        myImageLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        
-        // aligns left on Frame; top center on panel
-//        myImageLabel.setAlignmentX(SwingConstants.CENTER);
-//        myImageLabel.setAlignmentY(SwingConstants.CENTER);
 
+        /**
+         * Remove dead code
+         * by Genevieve Brown
+         * */
         myOpenButton = new JButton("Open...");
         mySaveButton = new JButton("Save As...");
         myCloseButton = new JButton("Close Image");
-        
-        // To display icons on these buttons, comment out the three lines above
-        // and use the three lines below instead.
-        
-//        myOpenButton = new JButton("Open...", new ImageIcon("icons\\open.gif"));
-//        mySaveButton = new JButton("Save As...", new ImageIcon("icons\\save.gif"));
-//        myCloseButton = new JButton("Close Image", new ImageIcon("icons\\close.gif"));
     }
 
     /**

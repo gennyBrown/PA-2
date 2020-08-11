@@ -11,6 +11,10 @@ import image.PixelImage;
  * 
  * @author Alan Fowler (acfowler@u.washington.edu)
  * @version 1.1
+ *
+ *  @author Cynthia Pang
+ *  @author Genevieve Brown
+ *  @author Bayley D Cope
  */
 public abstract class AbstractWeightedFilter extends AbstractFilter {
 
